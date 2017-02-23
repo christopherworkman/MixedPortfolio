@@ -1,0 +1,33 @@
+<head>
+  <!-- installing Firebase Simple Login -->
+  <script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js" ></script>
+  <!-- installing Firebase library if needed -->
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'> </script>
+  <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div id="container">
+
+    <div id="header">
+    </div> <!--closes header-->
+
+    <div id= "greeting">
+      <h2>Welcome back, </h2>
+      <h2 id="greetName" />
+    </div> <!--closes greeting-->
+
+    <div id="YourPlantsDiv">
+      <input type="text" id="plant1Name" placeholder="Enter your plant name" />
+      <input type = "button" value="Enter" onclick="addPlant()" /></br>
+    </div> <!--closes YourPlantsDiv-->
+
+</div> <!--closes container-->
+<script src="../FirebaseLogIn.js"></script>
+
+
+
+
+</body>

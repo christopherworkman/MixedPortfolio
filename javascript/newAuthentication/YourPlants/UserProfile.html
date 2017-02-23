@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+  <!-- installing Firebase Simple Login -->
+  <script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js" ></script>
+  <!-- installing Firebase library if needed -->
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'> </script>
+
+  <script>
+    function greeting(UserName) {
+      document.write("Welcome, " + UserName);
+    }
+
+    // var plantName1 = "pineapple";
+
+  </script>
+
+</head>
+
+<body>
+  <div class="two-thirds column">
+    <!-- <fieldset> -->
+
+    <!-- </fieldset> -->
+<h2 id = "authorIDlabel">Author:</h2>
+<h2 id = "authorID"/>
+
+
+<h3 id = "plant1label"> Plant Type 1: </h4>
+<h4 id="plant1"></h4>
+<br/>
+...Data
+<br/>
+
+Plant Type 2:
+<br/>
+...Data
+<br/>
+  </div>
+
+</body>
+
+<!-- My javascript from "firebase-simple-login" info on GitHub -->
+<script src="../FirebaseLogIn.js"></script>
+
+
+<script> //Trying to get user name and data to display
+
+// COULDN'T FIGURE OUT HOW TO DISPLAY DATA FROM FIREBASE
+var locRef = new Firebase("https://blinding-fire-9819.firebaseio.com/posts");
+
+locRef.on("child_added", function(snapshot, prevChildKey) {
+  var newPost = snapshot.val();
+
+
+  console.log("Author: " + newPost.author);
+  console.log("Title: " + newPost.title);
+
+  // var newAuthor = author;
+  // var newPost = title;
+  // document.write("Author: " + newPost.author);  //not correct        var User = document.getElementById('mailNew1').value;
+  // changePlantName(newAuthor, newPost); //sends variables from this function into a different function
+  // changePlantName(variableToPass1, variableToPass2); //sends variables from this function into a different function
+
+});
+
+
+
+User="John Smith";
+
+greeting(User);
+
+
+var changePlantName = function(){
+  var plantName1 = "pineapple";
+  document.getElementById("plant1").innerHTML = newPlantName;
+}
+</script>

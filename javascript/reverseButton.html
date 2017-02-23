@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>String Reverser</title>
+
+</head>
+<body>
+<div class ="container">
+	<h1>1. Type </br>text into field.</h1>
+	<h2>2. Click "Reverse."</h2>
+
+	<input type="text" id="enteredText" autofocus/>
+	<h3 id="validation"></h3>
+	<button onclick=reverseFunction()>Reverse</button>
+	<p id="output"></p>
+
+</div> <!--Closes container div-->
+
+<style>
+h1{
+	color:#009999;
+}
+
+h2{
+	color:#00b2b2;
+}
+
+h3{
+	color:#ff4d4d;
+	font-style: italic;
+}
+
+body{
+	background-color: #DED4B9;
+	font-family: "Arial";
+}
+
+.container{
+	position:relative;
+	width:300px;
+	margin: 0 auto;
+	/*background-color: black;*/
+	margin-top: 15%;
+	height:300px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #007f7f;
+	padding:20px;
+
+}
+</style>
+
+
+</body>
+
+<script>
+
+	var invalid = "Please enter text.";
+
+	function reverse(s) {
+	var o = '';
+	for (var i = s.length - 1; i >= 0; i--)
+		o += s[i];
+	return o;
+	} //closes reverse
+
+	function reverseFunction() {
+
+	var input = document.getElementById("enteredText").value;
+	var reversed = reverse(input);
+
+	if(input.length==0 || input == ""){
+		document.getElementById("validation").innerHTML = invalid;
+		document.getElementById("output").innerHTML = "";
+	} else{
+		document.getElementById("output").innerHTML = reversed;
+		document.getElementById("validation").innerHTML = "";}
+
+	} //closes reverseFuction
+</script>
+
+</html>

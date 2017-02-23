@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Randomized Data, Color Coded</title>
+        <script type="text/javascript" src="d3/d3.v3.js"></script>
+    </head>
+    <body>
+
+<!--the following script generates randomized data which is used to generate divs as "bars" in a bar graph. The color of the bar depends on the value of the data item-->
+
+    <script type="text/javascript">
+
+    var dataset = [];
+    for(var i=0; i<25; i++) { //array will consist of 25 items
+      var newNumber = Math.random() *70; //Max = 70
+      dataset.push(newNumber);
+    }
+
+
+    d3.select("body").selectAll("div")
+      .data(dataset)
+      .enter()
+      .append("div")
+      .attr("class","bar")
+
+      .style("height",function(d){
+        var barHeight= d*5; //scale x5
+        return barHeight + "px";
+
+
+      })
+
+
+      .style("background-color", function(d) {
+        if (d>=30 && d<60) { //orange if 30-59
+            return "orange";
+        }
+        else if (d>=50) { //red if 50+ (50-70)
+          return "red";
+        }
+
+        else{
+          return "yellow"; //yellow if 1-29
+        }});
+
+
+
+        </script>
+
+<style>
+div.bar{
+  display: inline-block;
+  width:20px;
+  height: 75px;
+  margin-right: 2px;
+
+}
+</style>
+
+
+    </body>
+</html>

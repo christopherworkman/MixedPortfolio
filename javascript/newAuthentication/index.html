@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+  <!-- installing Firebase Simple Login -->
+  <script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js" ></script>
+  <!-- installing Firebase library if needed -->
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'> </script>
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <script>
+  // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAjShW3RMs2KEpo2G5Nsz4gP3rp9I9RT-E",
+      authDomain: "beesprout.firebaseapp.com",
+      databaseURL: "https://beesprout.firebaseio.com",
+      storageBucket: "project-551339853192421155.appspot.com",
+    };
+    firebase.initializeApp(config);
+  </script>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+
+<div id = "container">
+<!-- <form id="login" action="/login" method="post"> -->
+  <form id="login" method="post">
+
+  <div class="two-thirds column" id="main">
+    <fieldset>
+      <legend id="descript">Sign In</legend>
+
+      <div id="alreadyExists">
+
+          Username:
+          <input type="text" id="mail" name="email" /> </br>
+          Password:
+          <input type="password" id="pwd" name="pwd" /></br>
+          <input type = "checkbox" id="remember" /> <i>Remember Me</i></br>
+          <a href="#" onclick="changePwdDisplay()" id ="forgotPwdLink"> Forgot password?</a>
+
+        </br>
+          <input type = "button" value ="Log In" onclick="logInAction()" />
+          <input type="button" value="Sign Up" onclick="newAccountDisplay()" />
+
+      </div><!-- closes already exists -->
+
+      <div id = "newAccountRegister" style="display:none">
+          Email:
+          <input type="text" id="mailNew1" name="email" /> </br>
+
+          <!-- Username:
+            <input type="text" id="userNew1" name="userName" /> </br> -->
+          Password:
+          <input type="password" id="pwdNew1" name="pwdNew1" /></br>
+          Confirm Password:
+          <input type="password" id="pwdNew2" name="pwdNew2" /> </br>
+          <h3 id = pwdValidation></h3>
+
+          <!-- <input type="submit" value="Register" onclick=“authClient.createUser()” /></br> -->
+          <input type = "button" value="Register" onclick="createUserAction()" /></br>
+          <p>Already have an account?</p>
+          <input type="submit" value="Log In" onclick=“alreadyExistsDisplay()” /></br>
+
+      </div> <!--closes newAccountRegister div-->
+
+      <div id="forgotPwd" style="display:none">
+
+          E-mail:
+          <input type="text" id="mailPwdReset" name="email" /> </br>
+
+        </br>
+          <input type = "button" value ="Reset" id="resetPwdButton" onclick="sendResetEmail()" />
+          <h3 id = emailSentValidation></h3>
+          <input type = "button" value ="Log In" id="logInButton" onclick="alreadyExistsDisplay()" style="display:none"/>
+      </div><!-- closes already exists -->
+
+
+
+
+
+      <p>Or sign in with an alternative account:</p>
+      <input type="image" src="images/google_32.png" onclick="signInGoogle()">
+      <img src="images/facebook_32.png">
+      <img src="images/linkedin_32.png">
+      <img src="images/twitter_32.png">
+    </fieldset>
+  </div>
+</form>
+</div> <!--closes container-->
+
+</body>
+
+
+<!-- My javascript from "firebase-simple-login" info on GitHub -->
+<script src="FirebaseLogIn.js"></script>
+<script src="GoogleAuthentication.js"></script>

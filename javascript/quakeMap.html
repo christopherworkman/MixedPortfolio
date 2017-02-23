@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 6,
+          center: {lat: 37.3861, lng: -122.0839},
+          mapTypeId: 'terrain'
+        });
+
+        // set the USGS URL as the source.
+        var script = document.createElement('script');
+
+
+        script.src = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojsonp'; //updated every 5 min, for last 7 days
+    document.getElementsByTagName('head')[0].appendChild(script);
+
+        map.data.setStyle(function(feature) {
+          var magnitude = feature.getProperty('mag');
+
+          return {
+            icon: getCircle(magnitude)
+          };
+        });
+      }
+
+      function getCircle(magnitude) {
+        return {
+          path: google.maps.SymbolPath.CIRCLE,
+          fillColor: 'red',
+          fillOpacity: .2,
+          scale: 5*Math.pow(2, magnitude) / 2,
+          strokeColor: 'white',
+          strokeWeight: .5
+        };
+      }
+    
+    function createMarker(pos, url) {
+      var marker = new google.maps.Marker({
+        position: pos,
+      map: map,
+      url: url
+      });
+    google.maps.event.addListener(marker, 'click', function() {
+      console.log(marker.url);
+      window.open(marker.url, '_blank');
+    });
+    return marker;
+    }
+
+      function eqfeed_callback(results) {
+      var home = [-122.0839, 37.3861]; //coordinates for Mountain View as "home"
+      var Rearth = 3959; // miles - Radius of Earth
+      var lat2 = home[1];
+      var lat1 = home[0];
+      var distance_threshold = 50.0;
+      
+      for (var i = 0; i < results.features.length; i++) {
+        var coords = results.features[i].geometry.coordinates;
+        var latLng = new google.maps.LatLng(coords[1],coords[0]);
+        var marker = createMarker(latLng, results.features[i].properties.url);
+
+        var Dlat = (home[1] - coords[1]) * Math.PI/180; //degrees to radians
+        var Dlon = (home[0] - coords[0]) * Math.PI/180;
+
+        //haversine function to determine distance between home and earthquake epicenter: distance on curved sphere
+        //arclength between each point
+        //angle a = angle between 2 points
+        //c = arclength between 2 points
+        //distance =  Radius of Earth (Reath) * arclength
+
+        var a = Math.pow(Math.sin(Dlat/2), 2) +
+          Math.cos(coords[1]) * Math.cos(home[1]) *
+          Math.pow(Math.sin(Dlon/2), 2)
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        var d = Rearth * c;
+
+        //conosole prints information for earthquakes within 50 miles of "home"
+        if (d < distance_threshold) { 
+          console.log(d);
+          console.log(results.features[i].properties.place)
+          mostRecentNew = results.features[0].properties.time
+          mostRecentLast = results.features[0].properties.time
+          if (time > mostRecent) {
+            
+          }
+
+
+        }
+
+        
+      }
+        map.data.addGeoJson(results);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFpK0ChaVonqQ8vwZSMqr-yecappwf4iU&callback=initMap">
+    
+
+
+
+
+    </script>
+  </body>
+</html>
