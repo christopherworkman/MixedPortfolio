@@ -1,7 +1,8 @@
 //Maria Bocanegra
 //CIS 163AA
-//MEID: MAR2180691
-//Final Project
+
+
+//calculate's an employee's pay per hours worked, after insurance deductions.
 
 import javax.swing.JOptionPane;
 

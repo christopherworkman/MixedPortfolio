@@ -1,7 +1,6 @@
 //Maria Bocanegra
 //CIS 163AA
-//MEID: MAR2180691
-//Final Project
+
 
 import java.util.*;
 

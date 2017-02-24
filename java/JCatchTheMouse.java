@@ -1,8 +1,6 @@
 // Filename JCatchTheMouse.java
 // Written by Maria Bocanegra
-// Written on April 12, 2016
-// Final - CH 15, Game Zone
-// Exercise Number 2, pg. 872
+
 // CIS 263AA
 // Class # 22892
 

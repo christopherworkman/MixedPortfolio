@@ -1,10 +1,6 @@
 // Filename JLottery2.java
 // Written by Maria Bocanegra
-// Written on April 5, 2016
-// Final - CH 14, Game Zone
-// Exercise Number 2, pg. 799
 // CIS 263AA
-// Class # 22892
 
 //generates 6 numbers between 0-30
 //user chooses up to 6 boxes (not more) -- each is one number
